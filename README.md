@@ -1,24 +1,21 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Bar Trainer is an application to help bar owners/managers help train their staff.
 
-Things you may want to cover:
+You can add your house or classic recipes you would like your staff to see and follow.
+Eventually you'll be able to use this app to train anyone how to bartender to the mythos of your bar.
 
-* Ruby version
+Installation instructions:
 
-* System dependencies
+Download:
+Code -> Clone this repo
+$ git clone (paste cloned address to the terminal)
+Downloading dependencies: $ bundle install
+Setting up local server: $ rails s (or rails server)
+Browse and enjoy: Open in your browser http://127.0.0.1:3000/
+License Link:
 
-* Configuration
+A link to the license (MIT) for this code is located here in the main directory of the GitHub repository (license.txt).
 
-* Database creation
+Created by:
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+William Cao (Flatiron School, Rails Project)
