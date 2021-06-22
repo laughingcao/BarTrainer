@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
-    before_action :require_login
-    skip_before_action :require_login, only: [:new, :create]
-
     def new
-        @user = User.new
+     @user = User.new
     end
 
     def create
@@ -24,7 +21,7 @@ class UsersController < ApplicationController
 
     def destroy
         current_user.destroy
-        session[:guest_id] = nil
+        session[:user_id] = nil
         redirect_to root_path
     end
 
