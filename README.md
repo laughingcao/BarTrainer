@@ -1,7 +1,7 @@
 
 Bar Trainer is an application to help bar owners/managers help train their staff.
 
-You can add your house or classic recipes you would like your staff to see and follow.
+You can add your house or classic cocktail recipes you would like your staff to see and learn how to make.
 Eventually you'll be able to use this app to train anyone how to bartender to the mythos of your bar.
 
 Installation instructions:
