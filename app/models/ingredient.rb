@@ -1,4 +1,3 @@
 class Ingredient < ApplicationRecord
-    belongs_to :user, through :cocktails
-    belongs_to :cocktail
+    belongs_to :recipe, :through :cocktails
 end

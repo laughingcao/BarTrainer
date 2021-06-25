@@ -2,7 +2,7 @@ class User < ApplicationRecord
     has_secure_password
 
     has_many :cocktails
-    has_many :ingredients, through: :cocktails
+    has_many :recipes, through: :cocktails
 
     validates :email, :first_name, presence: true
     validates :email, uniqueness: true
