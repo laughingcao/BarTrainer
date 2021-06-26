@@ -17,6 +17,11 @@ class UsersController < ApplicationController
     end
 
     def update
+        if @user.update(user_params)
+            redirect_to cocktails_path
+        else
+            render :edit
+        end
     end
 
     def destroy
@@ -28,6 +33,6 @@ class UsersController < ApplicationController
     private
     
     def user_params
-        params.require(:guest).permit(:email.downcase, :password, :password_confirmation)
+        params.require(:user).permit(:email.downcase, :password, :password_confirmation)
     end
 end

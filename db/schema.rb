@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 2021_06_22_203058) do
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
+    t.string "password_confirmation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

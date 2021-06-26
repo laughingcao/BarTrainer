@@ -7,4 +7,9 @@ module ApplicationHelper
     def user_session
         session[:user_id] = @user.id
     end
+
+    def logged_in?
+        session[:guest_id] != nil
+    end
+
 end

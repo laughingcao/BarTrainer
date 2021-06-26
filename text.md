@@ -4,15 +4,28 @@ User
 -has_many :cocktails
 -has_many :recipes, :through, :cocktails
 
+-email
+-password digest
+
 Cocktail
+
+-name
+-instructions
+-user id
+
 -belongs_to :user
 -has_many ingredients, :through, :recipes
 -has_many recipes
 
 Ingredient
--belongs_to :recipe, :through, :cocktails
+-name
+-has many recipes
+-has many cocktails through recipes
 
-Recipe
+Recipes
+-cocktail id
+-ingredient id
+-quantity
+
 -belongs_to cocktail
--belongs_to :user, :through :cocktails
--has_many :ingredients
+-belongs_to :ingredients
