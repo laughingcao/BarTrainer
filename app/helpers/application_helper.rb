@@ -12,4 +12,12 @@ module ApplicationHelper
         session[:guest_id] != nil
     end
 
+    def require_login
+        render 'errors/not_logged_in', :layout => "welcome" if session[:user_id].nil?
+    end
+
+    def authenticate(user)
+        user && user.authenticate(params[:password])
+    end
+
 end
