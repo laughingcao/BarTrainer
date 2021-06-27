@@ -8,9 +8,14 @@ class UsersController < ApplicationController
         if @user.valid?
             @user.save
             user_session
+            redirect_to user_path(@user)
         else
             render :new
         end
+    end
+
+    def show
+        @user = User.find_by_id(params[:id])
     end
 
     def edit

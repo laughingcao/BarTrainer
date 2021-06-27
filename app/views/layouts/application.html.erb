@@ -10,22 +10,17 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-        <% if !current_user %>
-          <a class="navbar-brand" href="<%= new_user_path %>"/>Sign Up</a>
-          <%= link_to "Log in", signin_path, class:"navbar-brand" %>
-        <% end %>
-        <% if current_user %>
-          <%= link_to "#{current_user.email}'s profile", user_path(current_user), class:"navbar-brand"%>
-          <%= link_to "Log Out", sessions_path, class:"navbar-brand",method:'delete' %>
-        <% end %>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-
-          </ul>
-        </div><
-      </div>
-    </div>
+      <% if current_user %>
+      <ul>
+      <li><%= current_user.email %></li>
+      <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+      </ul>
+      <% else %>
+      <ul>
+      <li><%= link_to "Login", 'login' %></a></li>
+      <li><%= link_to "Signup", 'signup' %></a></li>
+      </ul>
+      <% end %>
 
     <div class="container"  role="main">
       <% if flash[:notice] %>
