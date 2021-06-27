@@ -1,4 +1,10 @@
 class CocktailsController < ApplicationController
+    before_action :redirect_if_not_logged_in
+
+    def new
+        @cocktail = Cocktail.new
+        5.times { @cocktail.recipes.build.build_ingredient}
+    end 
     
     def index
         if params[:user_id] #index cocktails for a specific user
@@ -17,17 +23,12 @@ class CocktailsController < ApplicationController
         end 
     end 
 
-    def new
-        @cocktail = Cocktail.new
-        5.times { @cocktail.cocktail_ingredients.build.build_ingredient}
-    end 
-
     def create
         @cocktail = @user.cocktails.build(cocktail_params)
         if @cocktail.save 
-            redirect_to user_cocktail_path(@user, @cocktail)
+            redirect_to cocktail_recipes_path(@cocktail, @recipe)
         else 
-            5.times { @cocktail.cocktail_ingredients.build.build_ingredient}
+            5.times { @cocktail.recipe.build.build_ingredient}
             render 'new'
         end 
     end 

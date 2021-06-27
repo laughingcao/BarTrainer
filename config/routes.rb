@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
 
   resources :users
-  resources :cocktails
-  resources :ingredients
+  resources :cocktails do
+    resources :recipes
+  end
 
 end

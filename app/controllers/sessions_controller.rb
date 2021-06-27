@@ -8,8 +8,9 @@ class SessionsController < ApplicationController
       @user = User.find_by_email(params[:session][:email])
       if @user && @user.authenticate(params[:session][:password])
         session[:user_id] = @user.id
-        redirect_to cocktails_path
+        redirect_to cocktails_path(@user)
       else
+        flash[:message] = "wrong login info, please try again"
         redirect_to 'login'
       end
     end
