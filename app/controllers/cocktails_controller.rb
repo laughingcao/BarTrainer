@@ -55,6 +55,5 @@ private
             recipe_attributes: [:id, :quantity,
             ingredient_attributes: [:name]])
     end 
-end
 
 end
