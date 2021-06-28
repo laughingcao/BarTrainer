@@ -1,0 +1,9 @@
+ <% @cocktails each do |r| %>
+            <tr>
+                <% if r.quantity%>
+                        <td><%= r.quantity %></td> 
+                    <% end %>
+                    <% if r.ingredient.name%>
+                        <td><%= r.ingredient.name.capitalize %></td>
+                    <% end %>
+                      <% end %>

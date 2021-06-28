@@ -1,3 +1,8 @@
 <h1> All Cocktails </h1>
 
-<%= @cocktails.all %>
+<% @cocktails.each do |c| %>
+
+<tr>
+<td><%= link_to c.name, cocktail_path(c)%></td>
+ 
+    <%end%>

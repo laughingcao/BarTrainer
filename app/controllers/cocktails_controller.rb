@@ -1,4 +1,5 @@
 class CocktailsController < ApplicationController
+    before_action :current_user
     before_action :redirect_if_not_logged_in
 
     def new
@@ -11,16 +12,17 @@ class CocktailsController < ApplicationController
     end 
 
     def create
-        @cocktail = @user.cocktails.build(cocktail_params)
-        binding.pry
+        @cocktail = current_user.cocktails.build(cocktail_params)
         if @cocktail.save 
-            redirect_to cocktail_recipes_path(@cocktail, @recipe)
+            redirect_to user_cocktail_path(@user, @cocktail)
         else 
+            8.times { @cocktail.recipes.build.build_ingredient}
             render 'new'
-        end 
+        end
     end 
 
     def show
+        @cocktail = current_user.recipes.all
     end 
 
     def edit

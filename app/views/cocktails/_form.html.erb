@@ -11,12 +11,12 @@
 
 <h3> Ingredients:</h3>
 
-<%= f.fields_for :recipes do |ci|%>
+<%= f.fields_for :recipes do |r|%>
     <div class="row">
         <div class="col">
-            <%= ci.text_field :quantity%>
+            <%= r.text_field :quantity %>
         </div> 
-        <%= ci.fields_for :ingredient do |i|%>
+        <%= r.fields_for :ingredient do |i|%>
             <div class="col">
                 <%= i.text_field :name %>
             </div>    
