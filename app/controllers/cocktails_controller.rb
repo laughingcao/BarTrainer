@@ -3,6 +3,7 @@ class CocktailsController < ApplicationController
 
     def new
         @cocktail = Cocktail.new
+        8.times { @cocktail.recipes.build.build_ingredient}
     end 
     
     def index
@@ -11,6 +12,7 @@ class CocktailsController < ApplicationController
 
     def create
         @cocktail = @user.cocktails.build(cocktail_params)
+        binding.pry
         if @cocktail.save 
             redirect_to cocktail_recipes_path(@cocktail, @recipe)
         else 
@@ -30,9 +32,9 @@ class CocktailsController < ApplicationController
 private 
 
     def cocktail_params
-            params.require(:cocktail).permit(:name, :instructions,
-            recipe_attributes: [:id, :quantity,
-            ingredients: [:name]])
+            params.require(:cocktail).permit(
+                :name, :instructions, 
+                recipes_attributes: [:id, :quantity, ingredient_attributes: [:name]])
     end 
 
 end

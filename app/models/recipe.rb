@@ -6,12 +6,12 @@ class Recipe < ApplicationRecord
     accepts_nested_attributes_for :ingredient
 
     def ingredient_attributes=(ingredient_attributes)
-        ingredient_attributes.values.each do |ing|
-            if ing != ""
-                ingredient = Ingredient.find_or_create_by(name: ing.downcase)
+        ingredient_attributes.values.each do |i|
+            if i != ""
+                ingredient = Ingredient.find_or_create_by(name: i.downcase)
                 self.ingredient = ingredient
-            end
-        end
+            end 
+        end 
     end
-    
+
 end

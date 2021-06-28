@@ -13,8 +13,8 @@
       <% if current_user %>
       <ul>
       <li><%= current_user.email %></li>
-      <%= link_to "Add a Recipe", new_cocktail_path%> |
-      <%= link_to "View all Recipes", cocktails_path %> |
+      <%= link_to "Add a new Cocktail", new_cocktail_path%> |
+      <%= link_to "View all Cocktails", cocktails_path %> |
       <%= link_to "Log out", logout_path, method: "delete" %>
       </ul>
       <% else %>
@@ -28,6 +28,8 @@
       <% if flash[:notice] %>
         <%= flash[:notice] %>
       <% end %>
+
+      <%= @error %>
       
       <%= yield %>
     </div>
