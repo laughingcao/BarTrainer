@@ -1,0 +1,7 @@
+<h3>Edit Cocktail:</h3>
+<%= bootstrap_form_for @cocktail, url: user_cocktail_path(current_user, @cocktail) do |f|%>
+ 
+    <%= render partial: "form", locals: {cocktail: @cocktail, f: f} %>
+    <%= f.submit "Save Changes", class: "btn btn-primary"%>
+    <%= link_to "Cancel", user_cocktails_path(current_user), class: "btn btn-danger"%>
+<%end%>

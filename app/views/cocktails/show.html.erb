@@ -1,9 +1,21 @@
- <% @cocktails each do |r| %>
-            <tr>
-                <% if r.quantity%>
+ <h3> <%= @cocktail.name %>
+
+    <% if @cocktail.user_id == current_user.id %>
+        <hr>
+        <a class="btn btn-primary" <%= link_to "Edit Cocktail", edit_user_cocktail_path(current_user.id, @cocktail.id)%> </a>
+        <a class="btn btn-primary" <%= link_to "Delete Cocktail", user_cocktail_path(current_user.id, @cocktail), :method => :delete%> </a>
+        <% end %>
+
+ <h4> Directions : </h4> <p> <%= @cocktail.instructions %> </p>
+
+  <% @cocktail.recipes.each do |r| %>  
+                <tr>
+                    <% if r.quantity%>
+                 
                         <td><%= r.quantity %></td> 
                     <% end %>
                     <% if r.ingredient.name%>
                         <td><%= r.ingredient.name.capitalize %></td>
                     <% end %>
-                      <% end %>
+                </tr>
+            <%end%>

@@ -3,6 +3,5 @@
 <% @cocktails.each do |c| %>
 
 <tr>
-<td><%= link_to c.name, cocktail_path(c)%></td>
- 
+<td> <%= link_to c.name, cocktail_path(c)%></td>
     <%end%>
