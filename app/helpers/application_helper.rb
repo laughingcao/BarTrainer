@@ -16,6 +16,10 @@ module ApplicationHelper
         redirect_to '/' if !logged_in?
     end
 
+    def current_cocktail
+        @cocktail = Cocktail.find_by(id: params[:id])
+    end
+
     def authenticate(user)
         user && user.authenticate(params[:password])
     end

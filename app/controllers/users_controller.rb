@@ -8,7 +8,7 @@ class UsersController < ApplicationController
         if @user.valid?
             @user.save
             user_session
-            redirect_to user_path(@user)
+            redirect_to user_cocktails_path(@user)
         else
             render :new
         end
@@ -17,17 +17,6 @@ class UsersController < ApplicationController
     def show
         redirect_if_not_logged_in
         @user = User.find_by_id(params[:id])
-    end
-
-    def edit
-    end
-
-    def update
-        if @user.update(user_params)
-            redirect_to cocktails_path
-        else
-            render :edit
-        end
     end
 
     def destroy

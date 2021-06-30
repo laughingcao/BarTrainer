@@ -1,6 +1,7 @@
 class CocktailsController < ApplicationController
     before_action :current_user
     before_action :redirect_if_not_logged_in
+    before_action :current_cocktail
 
     def new
         @cocktail = Cocktail.new
@@ -19,7 +20,7 @@ class CocktailsController < ApplicationController
     def create
         @cocktail = current_user.cocktails.build(cocktail_params)
         if @cocktail.save 
-            redirect_to user_cocktail_path.user_id(user_id, cocktail_id)
+            redirect_to user_cocktail_path(user_id, cocktail_id)
         else 
             8.times { @cocktail.recipes.build.build_ingredient}
             render 'new'
@@ -27,11 +28,11 @@ class CocktailsController < ApplicationController
     end 
 
     def show
-        @cocktail = Cocktail.find_by(id: params[:id])
+
     end 
 
     def edit
-        @cocktail = Cocktail.find_by(id: params[:id])
+        # @cocktail = Cocktail.find_by(id: params[:id])
         count = @cocktail.recipes.size
         if count < 8
             available_ingredients = 8 - count
@@ -40,13 +41,13 @@ class CocktailsController < ApplicationController
     end 
 
     def update
-        @cocktail = Cocktail.find_by(id: params[:id])
+        # @cocktail = Cocktail.find_by(id: params[:id])
         @cocktail.update(cocktail_params)
         redirect_to user_cocktail_path(@cocktail.user.id, @cocktail) 
     end 
 
     def destroy
-        @cocktail = Cocktail.find_by(id: params[:id])
+        # @cocktail = Cocktail.find_by(id: params[:id])
         @cocktail.destroy
         redirect_to user_cocktails_path(current_user)
     end 

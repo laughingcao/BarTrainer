@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
         redirect_to cocktails_path(@user)
       else
         flash[:message] = "wrong login info, please try again"
-        redirect_to 'login'
+        render 'new'
       end
     end
     

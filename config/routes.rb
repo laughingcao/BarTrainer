@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
 
   delete '/logout' => 'sessions#destroy'
-  resources :cocktails
+  
   resources :users, only: [:show, :new, :create]
 
   resources :users  do
