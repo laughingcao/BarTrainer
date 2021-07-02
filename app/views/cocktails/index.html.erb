@@ -1,6 +1,6 @@
 <h1> All Cocktails </h1>
 <% @cocktails.each do |cocktail| %>
 <p>
-<%= link_to cocktail.name, cocktail_path(cocktail) %>
+<%= link_to cocktail.name, cocktail_path(cocktail) %> "Recipe By:" <%= cocktail.user.email %>
  <%end%>
 <p>
