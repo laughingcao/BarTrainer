@@ -18,9 +18,10 @@ class CocktailsController < ApplicationController
     end 
 
     def create
+        @user = current_user
         @cocktail = current_user.cocktails.build(cocktail_params)
         if @cocktail.save 
-            redirect_to user_cocktail_path(user_id, cocktail_id)
+            redirect_to user_cocktail_path(@user, @cocktail)
         else 
             8.times { @cocktail.recipes.build.build_ingredient}
             render 'new'
@@ -32,7 +33,6 @@ class CocktailsController < ApplicationController
     end 
 
     def edit
-        # @cocktail = Cocktail.find_by(id: params[:id])
         count = @cocktail.recipes.size
         if count < 8
             available_ingredients = 8 - count
@@ -41,13 +41,11 @@ class CocktailsController < ApplicationController
     end 
 
     def update
-        # @cocktail = Cocktail.find_by(id: params[:id])
         @cocktail.update(cocktail_params)
         redirect_to user_cocktail_path(@cocktail.user.id, @cocktail) 
     end 
 
     def destroy
-        # @cocktail = Cocktail.find_by(id: params[:id])
         @cocktail.destroy
         redirect_to user_cocktails_path(current_user)
     end 
