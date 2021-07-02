@@ -1,3 +1,6 @@
 <h1> CREATE A NEW ACCOUNT </h1>
+<%= flash[:message] %>
 <%= render 'form' %>
+<h3> Or Sign up using Google </h3>
+<%= button_to 'Google', '/auth/google_oauth2'%>
 

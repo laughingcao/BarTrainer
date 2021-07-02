@@ -23,7 +23,20 @@ class SessionsController < ApplicationController
     end
 
     def omniauth
-      binding.pry
+      @user = User.create_from_omniauth(auth)
+      if @user.valid?
+        user_session
+        redirect_to cocktails_path
+      else
+        flash[:message] = @user.errors.full_messages
+        redirect_to login_path
+      end
+    end
+
+    private
+
+    def auth
+      request.env['omniauth.auth']
     end
 
 end

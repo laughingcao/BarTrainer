@@ -1,6 +1,6 @@
 <h1> LOG IN </h1>
 
-<%= flash[:message] = flash[:message]%>
+<%= flash[:message] = flash[:message] %>
 <%= form_for(:session, url: login_path) do |f| %>
 <%= f.email_field :email, :placeholder => "Email" %>
 <%= f.password_field :password, :placeholder => "Password" %>
@@ -9,6 +9,3 @@
 
 <h3> Or Login with Google: </h3>
 <%= button_to 'Google', '/auth/google_oauth2'%>
-<%= button_to link_to "Log In with Google", "/auth/google_oauth2" %>
-
-<%= link_to "Log In with Google", "/auth/google_oauth2", method: :post %>
