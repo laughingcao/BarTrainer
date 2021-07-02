@@ -8,6 +8,9 @@ class Cocktail < ApplicationRecord
     validates :name, presence: true
     validates :instructions, presence: true
     validates :recipes, presence: true
+    validates :garnish, presence: true
+    validates :glassware, presence: true
+    validates :ice_type, presence: true
 
     accepts_nested_attributes_for :recipes, limit: 8,  :reject_if => proc { |attrs| attrs[:quantity].blank? || attrs[:ingredient_attributes][:name].blank?}
 end

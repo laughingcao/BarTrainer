@@ -54,7 +54,7 @@ private
 
     def cocktail_params
             params.require(:cocktail).permit(
-                :name, :instructions, 
+                :name, :instructions, :glassware, :garnish, :ice_type,
                 recipes_attributes: [:id, :quantity, ingredient_attributes: [:name]])
     end 
 

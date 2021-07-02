@@ -1,5 +1,5 @@
  <h3> <%= @cocktail.name %> 
- <h4> Recipe by : <%= @cocktail.user.email %>
+ <h5> Recipe by : <%= @cocktail.user.email %> </h5>
 
     <% if @cocktail.user_id == current_user.id %>
         <hr>
@@ -7,7 +7,10 @@
         <a class="btn btn-primary" <%= link_to "Delete Cocktail", user_cocktail_path(current_user.id, @cocktail), :method => :delete%> </a>
         <% end %>
 
- <h4> Directions : </h4> <p> <%= @cocktail.instructions %> </p>
+ <h3> Directions : </h4> <%= @cocktail.instructions %> </h3>
+ <h4> Glassware : <%= @cocktail.glassware %>  </h4>
+ <h4> Ice Type : <%= @cocktail.ice_type %>  </h4>
+ <h4> Garnish :  <%= @cocktail.garnish %> </h4>
 
  <h4> Ingredients :
  <p>
