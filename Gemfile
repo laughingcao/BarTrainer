@@ -24,6 +24,11 @@ gem 'bcrypt', '~> 3.1.7'
 gem "bootstrap_form"
 gem 'pry'
 
+gem 'dotenv-rails'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection', '~> 0.1'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

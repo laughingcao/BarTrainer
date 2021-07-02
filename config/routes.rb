@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  root "welcome#welcome"
+  root "sessions#welcome"
+  get '/auth/:provider/callback' => 'sessions#omniauth'
+  get '/auth/google_oath2/callback' => 'sessions#omiauth'
 
   get '/signup' => 'users#new'
   post '/signup' => 'users/#create'
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
 
-  delete '/logout' => 'sessions#destroy'
+  delete '/logout' => 'sessions#destroy' 
   
   resources :users, only: [:show, :new, :create]
 
