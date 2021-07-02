@@ -13,4 +13,10 @@ class Cocktail < ApplicationRecord
     validates :ice_type, presence: true
 
     accepts_nested_attributes_for :recipes, limit: 8,  :reject_if => proc { |attrs| attrs[:quantity].blank? || attrs[:ingredient_attributes][:name].blank?}
+
+    scope :up, -> { where(ice_type: 'up')}
+    scope :rocks, -> { where(ice_type: 'rocks')}
+    scope :big_rock, -> { where(ice_type: 'big rock')}
+    scope :crushed_ice, -> { where(ice_type: 'crushed ice' || 'pebble ice')}
+    
 end

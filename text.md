@@ -51,4 +51,3 @@ cocktails/:id/recipes/:id/edit
 cocktails/:id/recipes/:id - one cocktail one recipe
 
     -show
-
