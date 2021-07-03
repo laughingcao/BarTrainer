@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
     has_many :cocktails
     has_many :recipes, through: :cocktails
+    has_many :comments
+    has_many :cocktails, through: :comments
 
     validates :email, presence: true
     validates :email, uniqueness: true
