@@ -11,12 +11,13 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
 
   delete '/logout' => 'sessions#destroy' 
-  get '/users/:id/cocktails' => 'users#cocktails'
-  
+
   resources :users, only: [:show, :new, :create, :cocktails]
-  resources :cocktails
+  
   resources :users  do
-    resources :cocktails, only: [:new, :create, :edit, :destroy, :show, :update, :index]
+    resources :cocktails, only: [:new, :create, :edit, :destroy, :show, :update, :index]    
   end 
+  resources :cocktails
+
 
 end

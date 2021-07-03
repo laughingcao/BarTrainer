@@ -1,6 +1,10 @@
-<h2> All my Cocktails </h2>
+<% if @user %>
+    <%= @user.email %>'s Cocktail Recipes
+    <% else %>
+<h2> All my Cocktails </h2> 
+<% end %>
 
-<% current_user.cocktails.each do |c| %>
+<% @user.cocktails.each do |c| %>
 <p>
-<%= link_to c.name, cocktail_path(c) %> "Recipe By:" <%= link_to c.user.email, user_cocktails_path(c.user.id) %>
- <%end%>
+<%= link_to c.name, cocktail_path(c) %> Recipe By: <%= link_to c.user.email, user_cocktails_path(@user) %>
+ <%end%> 

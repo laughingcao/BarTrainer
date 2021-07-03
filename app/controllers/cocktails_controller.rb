@@ -9,7 +9,8 @@ class CocktailsController < ApplicationController
     end 
     
     def index
-        if params[:user_id] && @user = User.find_by(params[:user_id])
+        if params[:user_id]
+            @user = User.find_by(params[:user_id])
             @cocktails = @user.cocktails
         else
             @error = "That Cocktail Doesn't exist" if params[:user_id]
@@ -18,8 +19,7 @@ class CocktailsController < ApplicationController
     end 
 
     def create
-        @user = current_user
-        @cocktail = current_user.cocktails.build(cocktail_params)
+        @cocktail = @user.cocktails.build(cocktail_params)
         if @cocktail.save 
             redirect_to user_cocktail_path(@user, @cocktail)
         else 
@@ -54,7 +54,7 @@ private
 
     def cocktail_params
             params.require(:cocktail).permit(
-                :name, :instructions, :glassware, :garnish, :ice_type,
+                :name, :instructions, :glassware, :garnish, :ice_type, :user_id,
                 recipes_attributes: [:id, :quantity, ingredient_attributes: [:name]])
     end 
 

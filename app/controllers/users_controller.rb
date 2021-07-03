@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     before_action :current_cocktail
+    before_action :current_user
 
     def new
         @user = User.new
@@ -27,7 +28,8 @@ class UsersController < ApplicationController
 
    
     def cocktails
-        if params[:user_id] && @user = User.find_by(params[:user_id])
+        if params[:user_id]
+            @user = User.find_by(params[:user_id])
             @cocktails = @user.cocktails
         else
             @error = "That Cocktail Doesn't exist" if params[:user_id]
