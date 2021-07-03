@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     resources :cocktails, only: [:new, :create, :edit, :destroy, :show, :update, :index]    
   end 
   resources :cocktails
+  
+  resources :cocktails do
+    resources :comments
+  end
 
 
 end

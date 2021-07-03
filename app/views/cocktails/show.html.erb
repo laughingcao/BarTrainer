@@ -23,3 +23,7 @@
                         <p>
                     <% end %>
             <%end%>
+
+  <%= link_to "Add a comment to this cocktail", new_cocktail_comment_path(@cocktail) %>
+
+  <%= @comments %>

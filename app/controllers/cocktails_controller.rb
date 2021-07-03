@@ -29,7 +29,7 @@ class CocktailsController < ApplicationController
     end 
 
     def show
-  
+        @comments = Comment.all
     end 
 
     def edit

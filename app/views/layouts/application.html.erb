@@ -16,7 +16,7 @@
       <ul>
       <li><%= current_user.email %></li>
       <%= link_to "Add a new Cocktail", new_user_cocktail_path(current_user)%> |
-      <%= link_to "View all my Recipes", user_cocktails_path(current_user) %>
+      <%= link_to "View all my Recipes", user_cocktails_path(current_user) %> |
       <%= link_to "View all Cocktails", cocktails_path %> |
       <%= link_to "Log out", logout_path, method: "delete" %>
       </ul>
