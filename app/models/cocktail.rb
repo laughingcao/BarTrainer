@@ -14,9 +14,11 @@ class Cocktail < ApplicationRecord
 
     accepts_nested_attributes_for :recipes, limit: 8,  :reject_if => proc { |attrs| attrs[:quantity].blank? || attrs[:ingredient_attributes][:name].blank?}
 
-    scope :up, -> { where(ice_type: 'up')}
-    scope :rocks, -> { where(ice_type: 'rocks')}
-    scope :big_rock, -> { where(ice_type: 'big rock')}
-    scope :crushed_ice, -> { where(ice_type: 'crushed ice' || 'pebble ice')}
+    scope :martini, -> { where(glassware: 'martini')}
+    scope :double_rocks, -> { where(glassware: 'double rocks')}
+    scope :coupe, -> { where(glassware: 'coupe')}
+    scope :collins, -> { where(glassware: 'collins')}
+    scope :nick_nora, -> { where(glassware: 'nick and nora')}
+    scope :tiki_mug, -> { where(glassware: 'tiki mug')}
     
 end

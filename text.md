@@ -30,9 +30,17 @@ Recipes
 -belongs_to cocktail
 -belongs_to :ingredients
 
-NESTED routes
+ROUTES
 
-users/:id/cocktails - INDEX all the cocktails of specific user
+/cocktails - all the cocktails - cocktail#index
+
+/cocktails/:id - show one cocktail -cocktail#show
+
+/user/:id/cocktails - all one users cocktails -cocktail#index
+
+/users/:id/cocktails/:id - one users one cocktail -cocktail#show
+
+users/:id/cocktails - INDEX all the cocktails of specific user -cocktail#index
 
 users/:id/edit
     -form to add new cocktail - name
