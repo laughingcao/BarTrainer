@@ -1,3 +1,5 @@
+<h2 >Add a comment for <%= @cocktail.name %> </h2>
+<h3> Recipe by: <%=@cocktail.user.email %> </h3>
 <%= form_for([@comment.cocktail,@comment]) do |f|%>
  <% if !@comment.cocktail %>
   <%= f.label :cocktail %>
@@ -5,7 +7,7 @@
 <% else %>
     <%= f.hidden_field :cocktail_id %>
 <% end %>
-  <%= f.label :comment_text %>
+  <%= f.label :comment %>
   <%= f.text_field :comment_text %>
   <%= f.submit %>
 <% end %>
