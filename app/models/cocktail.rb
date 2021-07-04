@@ -1,10 +1,10 @@
 class Cocktail < ApplicationRecord
+    belongs_to :user
     has_many :recipes
     has_many :comments
     has_many :users, through: :comments
     has_many :ingredients, through: :recipes
-    belongs_to :user
-
+    
     validates_associated :recipes
 
     validates :name, presence: true

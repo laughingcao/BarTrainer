@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-    before_action :current_cocktail
     before_action :current_user
 
     def new
@@ -46,6 +45,6 @@ class UsersController < ApplicationController
     private
     
     def user_params
-        params.require(:user).permit(:email.downcase, :password, :password_confirmation)
+        params.require(:user).permit(:email.downcase, :password, :password_confirmation, :id)
     end
 end

@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+    before_action :current_cocktail
 
     def new
         if params[:cocktail_id]
@@ -6,21 +7,20 @@ class CommentsController < ApplicationController
             @comment = Comment.new
         end
     end
-
+    
     def create
-        @cocktail = Cocktail.find_by(params[:cocktail_id])
-        @comment = @cocktail.comments.build(comment_params)
-        if @comment.save
-            redirect_to cocktail_path(@cocktail)
-        else
-            redirect_to root_path
+        @cocktail = current_user.cocktails.build(cocktail_params)
+        if @cocktail.save 
+            redirect_to user_cocktail_path.user_id(user_id, cocktail_id)
+        else 
+            8.times { @cocktail.recipes.build.build_ingredient}
+            render 'new'
         end
-    end
+    end 
 
     private
 
     def comment_params
         params.require(:comment).permit(:comment_text)
     end
-
 end
