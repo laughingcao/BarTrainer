@@ -1,1 +1,11 @@
-<%= render 'form' %> adding comment to <%= @cocktail.name %>
+<%= form_for([@comment.cocktail,@comment]) do |f|%>
+ <% if !@comment.cocktail %>
+  <%= f.label :cocktail %>
+  <%= f.collection_select :cocktail_id, Cocktail.all, :id, :name %>
+<% else %>
+    <%= f.hidden_field :cocktail_id %>
+<% end %>
+  <%= f.label :comment_text %>
+  <%= f.text_field :comment_text %>
+  <%= f.submit %>
+<% end %>

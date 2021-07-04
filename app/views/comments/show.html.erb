@@ -1,0 +1,7 @@
+<h2><%= @comment.comment_text%> - <%= @comment.user.email%></h2>
+
+<% if @comment.user == current_user %>
+  <%= link_to "Edit Comment", edit_comment_path(@comment)%>
+<% end %>
+
+<h4>Find the Cocktail Recipe here: <%= link_to @comment.cocktail.name, cocktail_path(@comment.cocktail_id) %></h4>

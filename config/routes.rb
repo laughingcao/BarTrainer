@@ -22,6 +22,6 @@ Rails.application.routes.draw do
   resources :cocktails do
     resources :comments
   end
-
+  resources :comments
 
 end

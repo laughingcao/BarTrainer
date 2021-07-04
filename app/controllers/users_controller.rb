@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-    before_action :current_user
 
     def new
         @user = User.new
@@ -25,15 +24,14 @@ class UsersController < ApplicationController
         @user = User.find_by_id(params[:id])
     end
 
-   
     def cocktails
-        if params[:user_id]
-            @user = User.find_by(params[:user_id])
+            @user = User.find_by_id(params[:id])
             @cocktails = @user.cocktails
-        else
-            @error = "That Cocktail Doesn't exist" if params[:user_id]
-            @cocktails = Cocktail.all
-        end
+        # if params[:user_id]
+        # else
+        #     @error = "That Cocktail Doesn't exist" if params[:user_id]
+        #      @cocktails = Cocktail.all
+        # end
     end 
 
     def destroy
@@ -45,6 +43,6 @@ class UsersController < ApplicationController
     private
     
     def user_params
-        params.require(:user).permit(:email.downcase, :password, :password_confirmation, :id)
+        params.require(:user).permit(:email.downcase, :password, :password_confirmation)
     end
 end

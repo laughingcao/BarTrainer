@@ -1,0 +1,11 @@
+<% if @cocktail %>
+  <h1>Comments for <%= @cocktail.name%></h1>
+<% else %>
+  <h1>All Comments</h1>
+<% end %>
+
+<ul>
+<% @comments.each do |c|%>
+  <li><%= c.user.email%> says "<%= c.comment_text%>" about this cocktail: <strong><%= link_to c.cocktail.name, cocktail_path(c.cocktail) %></strong></li>
+<% end %>
+</ul>

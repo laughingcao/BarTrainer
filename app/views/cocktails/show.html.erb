@@ -25,5 +25,7 @@
             <%end%>
 
   <%= link_to "Add a comment to this cocktail", new_cocktail_comment_path(@cocktail) %>
-
-  <%= @comments %>
+    <h4> Comments: </h4>
+    <% @cocktail.comments.each do |c| %>
+        <li><strong><%= c.user.email%></strong> says "<%= link_to c.comment_text, comment_path(c) %>" </li>
+    <% end %>
