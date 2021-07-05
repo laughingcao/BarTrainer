@@ -6,6 +6,6 @@
 
 <ul>
 <% @comments.each do |c|%>
-  <li><%= c.user.email%> says "<%= c.comment_text%>" about this cocktail: <strong><%= link_to c.cocktail.name, cocktail_path(c.cocktail) %></strong></li>
+  <li><%= c.user.email%> said "<%= c.comment_text%>" about this cocktail: <strong><%= link_to c.cocktail.name, cocktail_path(c.cocktail) %></strong></li>
 <% end %>
 </ul>

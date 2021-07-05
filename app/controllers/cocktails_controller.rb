@@ -2,6 +2,7 @@ class CocktailsController < ApplicationController
     before_action :current_user
     before_action :redirect_if_not_logged_in
     before_action :current_cocktail
+    before_action :cocktail_owner, only: [:edit, :destroy, :update]
 
     def new
         @cocktail = Cocktail.new

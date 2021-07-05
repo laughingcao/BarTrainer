@@ -1,8 +1,10 @@
-<h2><%= @comment.comment_text%> - <%= @comment.user.email%></h2>
+<h3> <%= @comment.user.email%>'s comment: on <%= @comment.cocktail.name %> cocktail</h3>
+<h4> <%= @comment.comment_text%> </h4>
+
 
 <% if @comment.user == current_user %>
-  <%= link_to "Edit Comment", edit_comment_path(@comment)%>
+  <%= link_to "Edit Comment", edit_comment_path(@comment)%> |
   <%= link_to "Delete Comment", cocktail_comment_path(current_user.id, @comment), :method => :delete%> </a>
 <% end %>
 
-<h4>Find the Cocktail Recipe here: <%= link_to @comment.cocktail.name, cocktail_path(@comment.cocktail_id) %></h4>
+<h4>Cocktail Recipe here: <%= link_to @comment.cocktail.name, cocktail_path(@comment.cocktail_id) %></h4>
