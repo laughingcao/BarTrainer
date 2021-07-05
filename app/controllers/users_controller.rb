@@ -28,11 +28,6 @@ class UsersController < ApplicationController
     def cocktails
             @user = User.find_by_id(params[:id])
             @cocktails = @user.cocktails
-        # if params[:user_id]
-        # else
-        #     @error = "That Cocktail Doesn't exist" if params[:user_id]
-        #      @cocktails = Cocktail.all
-        # end
     end 
 
     def destroy

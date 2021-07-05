@@ -26,8 +26,8 @@ module ApplicationHelper
 
     def cocktail_owner
         if !current_user.cocktails.include?(current_cocktail)
-            flash[:alert] = "You can't edit this recipe!"
-            redirect_to user_path(current_user)
+            flash[:message] = "You can't edit this recipe!"
+            redirect_to cocktail_path(current_user)
         end 
     end
 
