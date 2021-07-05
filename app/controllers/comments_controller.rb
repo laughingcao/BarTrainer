@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
     before_action :redirect_if_not_logged_in
+    before_action :redirect_if_not_comment_author, only: [:edit, :update, :destroy]
 
     def index
         if params[:cocktail_id] && @cocktail = Cocktail.find_by_id(params[:cocktail_id])
@@ -29,6 +30,7 @@ class CommentsController < ApplicationController
     end 
 
     def show
+        @user = current_user
         @comment = Comment.find_by(id: params[:id])
     end
 
@@ -48,7 +50,7 @@ class CommentsController < ApplicationController
     def destroy
         @comment = Comment.find_by(id: params[:id])
         @comment.destroy
-        redirect_to comment_path(current_user)
+        redirect_to comments_path
     end 
 
     private
@@ -56,5 +58,10 @@ class CommentsController < ApplicationController
     def comment_params
         params.require(:comment).permit(:comment_text, :cocktail_id)
     end
+
+    def redirect_if_not_comment_author
+        @comment = Comment.find_by(id: params[:id])
+        redirect_to comments_path if @comment.user != current_user
+     end
 
 end
