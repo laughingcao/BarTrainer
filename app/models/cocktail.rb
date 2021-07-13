@@ -22,5 +22,6 @@ class Cocktail < ApplicationRecord
     scope :collins, -> { where(glassware: 'collins')}
     scope :nick_nora, -> { where(glassware: 'nick and nora')}
     scope :tiki_mug, -> { where(glassware: 'tiki mug')}
+    scope :alphabetize, -> {order('name')}
     
 end

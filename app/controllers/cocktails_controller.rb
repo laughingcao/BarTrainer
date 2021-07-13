@@ -11,10 +11,10 @@ class CocktailsController < ApplicationController
     
     def index
         if params[:user_id] && @user = User.find_by(params[:user_id])
-            @cocktails = @user.cocktails
+            @cocktails = @user.cocktails.alphabetize
         else
             @error = "That Cocktail Doesn't exist" if params[:user_id]
-            @cocktails = Cocktail.all
+            @cocktails = Cocktail.all.alphabetize
         end
     end 
 
@@ -22,7 +22,7 @@ class CocktailsController < ApplicationController
         @user = current_user
         @cocktail = current_user.cocktails.build(cocktail_params)
         if @cocktail.save 
-            redirect_to user_cocktails_path(current_user, @cocktail)
+            redirect_to user_cocktails_path(current_user)
         else 
            8.times { @cocktail.recipes.build.build_ingredient}
             render 'new'

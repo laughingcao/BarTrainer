@@ -15,7 +15,7 @@
       <% if current_user %>
       <ul>
       <li><%= current_user.email %></li>
-      <%= link_to "Add a new Cocktail", new_cocktail_path(current_user)%> |
+      <%= link_to "Add a new Cocktail", new_cocktail_path %> |
       <%= link_to "View my Recipes", user_cocktails_path(current_user) %> |
       <%= link_to "View all Cocktail Recipes", cocktails_path %> |
       <%= link_to "View all Comments", comments_path %> |
